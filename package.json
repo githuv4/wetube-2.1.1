@@ -2,7 +2,6 @@
   "name": "wetube",
   "version": "1.0.0",
   "description": "Cloning Youtube with Vanilla and NodeJS",
-  "author": "Nicolás Serrano Arévalo",
   "dependencies": {
     "@babel/core": "^7.1.5",
     "@babel/node": "^7.0.0",
@@ -14,7 +13,7 @@
     "morgan": "^1.10.0"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node index.js --delay 2"
+    "start": "nodemon --exec babel-node init.js"
   },
   "devDependencies": {
     "nodemon": "^1.18.6"
