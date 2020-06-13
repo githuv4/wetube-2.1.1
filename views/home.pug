@@ -2,3 +2,11 @@ extends layouts/main
 
 block content
     H2 Branch 2
+    .videos
+        each item in videos
+            h1=item.title
+            p=item.description
+            p=item.views
+
+        
+
