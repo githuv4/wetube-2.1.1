@@ -12,6 +12,6 @@ export const search = (req, res) => {
 };
 export const video = (req, res) => res.send("video");
 export const upload = (req, res) => res.send("Upload");
-export const videoDetail = (req, res) => res.send("videoDetail");
+export const videoDetail = (req, res) => res.render("videoDetail");
 export const editVideo = (req, res) => res.send("editVideo");
 export const deleteVideo = (req, res) => res.send("deleteVideo");
