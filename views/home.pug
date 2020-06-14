@@ -1,12 +1,16 @@
 extends layouts/main
+include mixins/videoBlock
 
 block content
     H2 Branch 2
     .videos
         each item in videos
-            h1=item.title
-            p=item.description
-            p=item.views
+            +videoBlock3({
+                videoFile:item.videoFile,
+                title:item.title,
+                description:item.description,
+                views:item.views
+            })
 
         
 
