@@ -8,7 +8,7 @@
             input(type="text", name="term", placeholder= "Searching By")
     .header__column
         ul
-            if !user
+            if !user.isAthenticated
                 li
                     a(href=routes.join) Join
                 li
@@ -17,7 +17,7 @@
                 li
                     a(href=`/videos${routes.upload}`) Upload
                 li
-                    a(href=`/users${routes.userDetail}`) Profile
+                    a(href=routes.userDetail(user.id)) Profile
                 li
                     a(href=routes.logout) Log Out
 
