@@ -2,7 +2,7 @@ import routes from "../routes";
 import "../db"
 
 export const home = (req, res) => {
-  res.render("home", { pageTitle: "Home", Video });
+  res.render("home", { pageTitle: "Home", vidoes });
 };
 
 export const search = (req, res) => {
@@ -10,7 +10,7 @@ export const search = (req, res) => {
     query: { term: searchingBy },
   } = req;
   // console.log(req.query.term);
-  res.render("search", { pageTitle: "Search", searchingBy, Video });
+  res.render("search", { pageTitle: "Search", searchingBy, vidoes });
 };
 
 export const getUpload = (req, res) =>
