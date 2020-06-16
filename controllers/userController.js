@@ -1,4 +1,5 @@
-export const profile = (req, res) => res.send("Profile");
+export const profile = (req, res) =>
+  res.render("userDetail", { pageTitle: "Profile" });
 export const editProfile = (req, res) =>
   res.render("editProfile", { pageTitle: "Edit Profile" });
 export const changePassword = (req, res) => res.send("Change Password");

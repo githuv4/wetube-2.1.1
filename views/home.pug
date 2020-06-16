@@ -1,4 +1,6 @@
 extends layouts/main
 
 block content
-    h3 Home
+    each video in videos
+        h1=video.title
+        p=video.description
