@@ -3,5 +3,5 @@ export const videoDetail = (req, res) => res.send("Video Dtail");
 export const editVideo = (req, res) => res.send("Edit Video");
 export const deleteVideo = (req, res) => res.send("Delete Video");
 
-export const home = (req, res) => res.render("home");
-export const join = (req, res) => res.send("Join");
+export const home = (req, res) => res.render("home", {pageTitle:"Home"});
+export const join = (req, res) => res.send("Join", {pageTitle:"Join"});

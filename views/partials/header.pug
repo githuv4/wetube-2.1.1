@@ -1,8 +1,13 @@
-header
-    h1 
-        i.fab.fa-youtube Wetube
-    ul
-        li
-            a(href="#") Join  
-        li
-            a(href="#") Log In
+header.header
+    .header__column
+        a(href=routes.home)
+            i.fab.fa-youtube Wetube
+    .header__column
+        form(action=routes.search, method="get")
+            input(type="text", name="term", placeholder="Search")
+    .header__column
+        ul
+            li
+                a(href="#") Join  
+            li
+                a(href="#") Log In
