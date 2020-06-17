@@ -1,4 +1,13 @@
 extends layouts/main
+include mixins/videoBlock
 
 block content
-    p Video Detail
+    p=pageTitle
+    //- .videos
+    //-     +videoBlock({
+    //-         id:item.id,
+    //-         fileUrl:item.fileUrl,
+    //-         title:item.title,
+    //-         description:item.description,
+    //-         views:item.views
+    //-     })
