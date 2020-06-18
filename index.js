@@ -8,5 +8,6 @@ function handleListener() {
 }
 
 app.get("/", (req, res) => res.send("home1"));
+app.get("/profile", (req, res) => res.send("profile"));
 
 app.listen(PORT, handleListener);
