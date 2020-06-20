@@ -2,12 +2,12 @@ extends layouts/main
 include mixins/videoBlock
 
 block content
-    H2 Branch 2
+    H2=pageTitle 
     .videos
         each item in videos
             +videoBlock3({
                 id:item.id,
-                videoFile:item.videoFile,
+                fileUrl:item.fileUrl,
                 title:item.title,
                 description:item.description,
                 views:item.views
