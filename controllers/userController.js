@@ -21,11 +21,13 @@ export const postJoin = (req, res) => {
   }
 };
 
-export const login = (req, res) => res.render("login", { pageTitle: "Login" });
-export const logout = (req, res) => res.send("loggout");
-export const search = (req, res) => {
+export const getLogin = (req, res) =>
+  res.render("login", { pageTitle: "Login" });
+export const postLogin = (req, res) => {
   const {
-    query: { term: searchingBy },
+    body: { name, email, password },
   } = req;
-  res.render("search", { pageTitle: "Search", searchingBy, videos });
+  res.render("login", { pageTitle: "Login" });
 };
+
+export const logout = (req, res) => res.send("loggout");
