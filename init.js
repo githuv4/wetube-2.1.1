@@ -1,6 +1,6 @@
 import app from "./app";
 
-const PORT = 3000;
+const PORT = 4000;
 
 function handleListener() {
   console.log(`✅ Listening on : http://localhost:${PORT}`);
