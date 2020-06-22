@@ -2,7 +2,12 @@ header.header
     .header__column
         h2 
             a(href=routes.home)
-                i.fab.fa-youtube
+                span.header__icon
+                    i.fab.fa-youtube
+                span #{siteTitle}
+    .header__column
+        form(action=`/videos${routes.search}`, method="get")
+            input(type="text", name="term", placeholder="Search by")
     .header__column
         ul
             li

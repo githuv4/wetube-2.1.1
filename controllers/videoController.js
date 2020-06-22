@@ -1,7 +1,13 @@
 export const videoDetail = (req, res) =>
   res.render("videoDetail", { pageTitle: "Video Detail" });
-export const search = (req, res) =>
-  res.render("search", { pageTitle: "Search" });
+
+export const search = (req, res) => {
+  const {
+    query: { term: searchingBy },
+  } = req;
+  res.render("search", { pageTitle: "Search", searchingBy });
+};
+
 export const getUpload = (req, res) =>
   res.render("upload", { pageTitle: "Upload" });
 export const postUpload = (req, res) =>

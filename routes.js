@@ -3,7 +3,6 @@ const HOME = "/";
 const JOIN = "/join";
 const LOGIN = "/login";
 const LOGOUT = "/logout";
-const SEARCH = "/search";
 
 // Users
 
@@ -16,6 +15,7 @@ const CHANGE_PASSWORD = "/:id/change-password";
 
 const VIDEOS = "/videos";
 const UPLOAD = "/upload";
+const SEARCH = "/search";
 const VIDEO_DETAIL = "/:id";
 const EDIT_VIDEO = "/:id/edit";
 const DELETE_VIDEO = "/:id/delete";
