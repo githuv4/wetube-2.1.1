@@ -1,4 +1,9 @@
 extends templates/layout
 
 block content
-    h1=pageTitle
+    .form-container
+        form(action=routes.login method="post")
+            input(type="email" name="email" placeholder="Email" required)
+            input(type="password" name="password" placeholder="Password" required)
+            input(type="submit" value="Log In")
+    include partials/socialLogin

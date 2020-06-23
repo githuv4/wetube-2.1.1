@@ -1,4 +1,8 @@
 extends templates/layout
 
 block content
-    h1=pageTitle
+    .form-container
+        form(action=routes.editProfile method="post")
+            label(for="avatar") Avatar
+            input(type="file" name="avatar")
+            input(type="text" name="name" placeholder="Name")
