@@ -6,3 +6,9 @@ block content
             label(for="avatar") Avatar
             input(type="file" name="avatar")
             input(type="text" name="name" placeholder="Name")
+            input(type="email" name="email" placeholder="Email")
+            input(type="submit" value="Update Profile")
+    .button-changePassword
+        a(href=`/users${routes.changePassword}`)
+            button Change Password
+

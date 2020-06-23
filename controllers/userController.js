@@ -1,4 +1,8 @@
-export const home = (req, res) => res.render("home", { pageTitle: "Home" });
+import { videos } from "../db";
+
+export const home = (req, res) => {
+  res.render("home", { pageTitle: "Movies", videos });
+};
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 export const postJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 export const getLogin = (req, res) =>

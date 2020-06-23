@@ -3,7 +3,6 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
-import { localsMiddleware } from "./localsMiddleware";
 import userRouter from "./routers/userRouters";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
