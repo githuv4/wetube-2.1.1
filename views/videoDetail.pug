@@ -1,4 +1,12 @@
 extends layouts/main
 
 block content
-    p1 Video Detail
+    .video__player
+        video(src=`/${video.fileUrl}`, controls)
+    .video__info
+        a(href=`/videos${routes.editVideo}`) 
+            button Edit Video
+        h2=video.title
+        p=video.views
+        span=`${video.createdAt.getFullYear()}.${video.createdAt.getMonth()+1}.${video.createdAt.getDate()}`
+        p=video.description
