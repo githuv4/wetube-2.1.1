@@ -1,7 +1,14 @@
 import routes from "../routes";
+import Video from "../models/Video";
+import { permittedCrossDomainPolicies } from "helmet";
 
-export const home = (req, res) => {
-  res.render("home", { pageTitle: "Home", videos });
+export const home = async (req, res) => {
+  try {
+    const videos = await Video.find({});
+    res.render("home", { pageTitle: "Home", videos });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const search = (req, res) => {
