@@ -6,6 +6,8 @@ block content
     .video__info
         a(href=routes.editVideo(video.id)) 
             button Edit Video
+        a(href=routes.deleteVideo(video.id))
+            button Delete Video
         h2=video.title
         p=video.views
         span=`${video.createdAt.getFullYear()}.${video.createdAt.getMonth()+1}.${video.createdAt.getDate()}`
