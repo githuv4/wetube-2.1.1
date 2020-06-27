@@ -5,10 +5,10 @@ import { permittedCrossDomainPolicies } from "helmet";
 export const home = async (req, res) => {
   try {
     const videos = await Video.find({});
-    res.render("home", { pageTitle: "Home", videos });
+    res.render("home", { pageTitle: "Home(b3)", videos });
   } catch (error) {
     console.log(error);
-    res.render("home", { pageTitle: "Home", videos: [] });
+    res.render("home", { pageTitle: "Home(b3)", videos: [] });
   }
 };
 
@@ -22,19 +22,29 @@ export const search = (req, res) => {
 export const getUpload = (req, res) =>
   res.render("Upload", { pageTitle: "Upload" });
 
-export const postUpload = (req, res) => {
+export const postUpload = async (req, res) => {
   const {
-    body: { file, title, description },
+    file: { path },
+    body: { title, description },
   } = req;
+  // console.log(path, videoFile, title, description);
   // To Do : Upload and Save video
-  res.redirect(routes.videoDetail(34234));
+  const newVideo = await Video.create({
+    fileUrl: path,
+    title,
+    description,
+  });
+  console.log(newVideo);
+  res.redirect(routes.videoDetail(newVideo.id));
 };
 
-export const videoDetail = (req, res) => {
+export const videoDetail = async (req, res) => {
   const {
     params: { id },
   } = req;
-  res.render("videoDetail", { pageTitle: "Video Detail" });
+  const video = await Video.findById(id);
+  console.log(video);
+  res.render("videoDetail", { pageTitle: "Video Detail", video });
 };
 export const editVideo = (req, res) =>
   res.render("editVideo", { pageTitle: "Edit Video" });

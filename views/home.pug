@@ -2,6 +2,7 @@ extends layouts/main
 include mixins/videoBlock
 
 block content
+    h2=pageTitle
     each video in videos
         +videoBlock({
             id:video.id,
