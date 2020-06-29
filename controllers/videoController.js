@@ -19,7 +19,6 @@ export const search = async (req, res) => {
   const videos = await Video.find({});
   res.render("Search", { pageTitle: "Search", searchingBy, videos });
 };
-export const video = (req, res) => res.send("video");
 
 export const getUpload = (req, res) =>
   res.render("upload", { pageTitle: "Upload" });
@@ -77,7 +76,7 @@ export const postEditVideo = async (req, res) => {
       }
     );
     res.redirect(routes.videoDetail(id));
-  } catch (erro) {
+  } catch (error) {
     console.log(error);
     res.redirect(routes.home);
   }
