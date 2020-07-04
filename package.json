@@ -5,8 +5,10 @@
   "dependencies": {
     "@babel/core": "^7.1.5",
     "@babel/node": "^7.0.0",
+    "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.1.5",
     "autoprefixer": "^9.8.4",
+    "babel-loader": "^8.1.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "css-loader": "^3.6.0",
@@ -26,7 +28,7 @@
   },
   "scripts": {
     "dev:server": "nodemon --exec babel-node init.js",
-    "dev:assets": "set WEBPACK_ENV=development&&webpack",
+    "dev:assets": "set WEBPACK_ENV=development&&webpack -w",
     "build:assets": "set WEBPACK_ENV=production&&webpack"
   },
   "devDependencies": {
