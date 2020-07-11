@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
 
 const VideoSchema = new mongoose.Schema({
+  link: String,
   fileUrl: {
     type: String,
-    required: "File URL is required",
+    // required: "File URL is required",
   },
   title: {
     type: String,

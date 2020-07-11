@@ -2,7 +2,10 @@ extends layouts/main
 
 block content
     .video__player
-        video(src=`/${video.fileUrl}`, controls)
+        if (video.link)
+            video(src=`${video.link}`, controls)
+        else
+            video(src=`/${video.fileUrl}`, controls)
     .video__info
         a(href=routes.editVideo(video.id)) 
             button Edit Video

@@ -94,7 +94,18 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./assets/scss/styles.scss\");\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__);\n\n\n//# sourceURL=webpack:///./assets/js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./assets/scss/styles.scss\");\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _upload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./upload */ \"./assets/js/upload.js\");\n/* harmony import */ var _upload__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_upload__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\n//# sourceURL=webpack:///./assets/js/main.js?");
+
+/***/ }),
+
+/***/ "./assets/js/upload.js":
+/*!*****************************!*\
+  !*** ./assets/js/upload.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("var videoLinkBtn = document.getElementById(\"jsLinkBtn\");\nvar fileUrlInput = document.getElementById(\"jsFileUrlInput\");\n\nvar handleVideoLinkBtn = function handleVideoLinkBtn() {\n  fileUrlInput.innerHTML = \"<input type=\\\"text\\\", name=\\\"link\\\", placeholder=\\\"Put a link\\\">\";\n  videoLinkBtn.innerText = \"Video File\";\n  videoLinkBtn.removeEventListener(\"click\", handleVideoLinkBtn);\n  videoLinkBtn.addEventListener(\"click\", handleVideoFileBtn);\n};\n\nvar handleVideoFileBtn = function handleVideoFileBtn() {\n  fileUrlInput.innerHTML = \"<input type=\\\"file\\\", name=\\\"videoFile\\\", accept=\\\"video/*\\\">\";\n  videoLinkBtn.innerText = \"Video Link\";\n  videoLinkBtn.removeEventListener(\"click\", handleVideoFileBtn);\n  videoLinkBtn.addEventListener(\"click\", handleVideoLinkBtn);\n};\n\nvideoLinkBtn.addEventListener(\"click\", handleVideoLinkBtn);\n\n//# sourceURL=webpack:///./assets/js/upload.js?");
 
 /***/ }),
 
