@@ -29,20 +29,50 @@ export const search = async (req, res) => {
 
 export const getUpload = (req, res) =>
   res.render("upload", { pageTitle: "Upload" });
+
 export const postUpload = async (req, res) => {
   const {
-    body: { title, description, link },
-    file: { path },
+    body: { link },
   } = req;
+  console.log(link);
+  if (link) {
+    const {
+      body: { title, description, link },
+    } = req;
+    const newVideo = await Video.create({
+      link,
+      title,
+      description,
+    });
+    console.log(newVideo);
+    res.redirect(routes.videoDetail(newVideo.id));
+  }
+  if (!link) {
+    const {
+      body: { title, description },
+      file: { path },
+    } = req;
+    const newVideo = await Video.create({
+      fileUrl: path,
+      title,
+      description,
+    });
+    console.log(newVideo);
+    res.redirect(routes.videoDetail(newVideo.id));
+  }
 
-  const newVideo = await Video.create({
-    fileUrl: path,
-    link,
-    title,
-    description,
-  });
-  console.log(newVideo);
-  res.redirect(routes.videoDetail(newVideo.id));
+  // const {
+  //   body: { title, description },
+  //   file: { path },
+  // } = req;
+
+  // const newVideo = await Video.create({
+  //   fileUrl: path,
+  //   title,
+  //   description,
+  // });
+  // console.log(newVideo);
+  // res.redirect(routes.videoDetail(newVideo.id));
 };
 
 export const videoDetail = async (req, res) => {
@@ -74,12 +104,13 @@ export const getEditVideo = async (req, res) => {
 export const postEditVideo = async (req, res) => {
   const {
     params: { id },
-    body: { title, description },
+    body: { link, title, description },
   } = req;
   try {
     await Video.findOneAndUpdate(
       { _id: id },
       {
+        link,
         title,
         description,
       }

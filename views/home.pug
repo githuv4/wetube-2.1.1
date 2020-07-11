@@ -7,12 +7,12 @@ block content
         each item in videos
             +videoBlock3({
                 id:item.id,
-                fileUrl:item.fileUrl,
+                fileUrl:item.fileUrl || item.link,
                 title:item.title,
-                description:item.description,
-                views:item.views
             })
     
 
+                //- description:item.description,
+                //- views:item.views
         
 
