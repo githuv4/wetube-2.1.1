@@ -4,8 +4,16 @@ block content
     .video__player
         if (video.link)
             video(src=`${video.link}`, controls)
-        else
+        else if (video.fileUrl)
             video(src=`/${video.fileUrl}`, controls)
+        else if (video.youtubeLink)
+            iframe(
+                width="860",
+                height="510", 
+                src=video.youtubeLink,
+                frameborder="0",allowfullscreen
+                )
+            
     .video__info
         a(href=routes.editVideo(video.id)) 
             button Edit Video

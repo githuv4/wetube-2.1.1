@@ -6,6 +6,8 @@ block content
         form(action=routes.editVideo(video.id), method="post")
             if (video.link)
                 input(type="text", name="link", value=video.link)
+            if (video.youtubeId)
+                input(type="text", name="youtubeId", value=video.youtubeId)
             input(type="text", placeholder="Title", name="title", value=video.title)
             textarea(name="description", placeholder="Description")=video.description
             input(type="submit", value="Edit Video")

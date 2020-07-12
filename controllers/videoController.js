@@ -32,9 +32,9 @@ export const getUpload = (req, res) =>
 
 export const postUpload = async (req, res) => {
   const {
-    body: { link },
+    body: { link, youtubeId },
   } = req;
-  console.log(link);
+
   if (link) {
     const {
       body: { title, description, link },
@@ -47,7 +47,21 @@ export const postUpload = async (req, res) => {
     console.log(newVideo);
     res.redirect(routes.videoDetail(newVideo.id));
   }
-  if (!link) {
+  if (youtubeId) {
+    const {
+      body: { title, description, youtubeId },
+    } = req;
+    const youtubeLink = `https://www.youtube.com/embed/${youtubeId}`;
+    const newVideo = await Video.create({
+      youtubeLink,
+      youtubeId,
+      title,
+      description,
+    });
+    console.log(newVideo);
+    res.redirect(routes.videoDetail(newVideo.id));
+  }
+  if (!link && !youtubeId) {
     const {
       body: { title, description },
       file: { path },
@@ -104,12 +118,15 @@ export const getEditVideo = async (req, res) => {
 export const postEditVideo = async (req, res) => {
   const {
     params: { id },
-    body: { link, title, description },
+    body: { link, title, description, youtubeId },
   } = req;
+  const youtubeLink = `https://www.youtube.com/embed/${youtubeId}`;
   try {
     await Video.findOneAndUpdate(
       { _id: id },
       {
+        youtubeLink,
+        youtubeId,
         link,
         title,
         description,

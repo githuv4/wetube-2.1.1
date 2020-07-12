@@ -7,9 +7,12 @@ block content
             label(for="file") Video File
             #jsFileUrlInput
                 input#jsInputType(type="file", name="videoFile", accept="video/*")
-            button(name="toggleBtn")#jsLinkBtn Video Link
-            p
+                //- input#jsInputType(type="text", name="link", placeholder="Put a link")
+                //- input#jsInputType(type="text", name="youtubeId", placeholder="Put a youtube ID")
             input(type="text", name="title", placeholder="Title", required)
             textarea(name="description", placeholder="Description", required)
             input(type="submit", value="Update Video")
-
+    .buttons
+        button(name="urlBtn")#jsFileBtn Video File
+        button(name="urlBtn")#jsLinkBtn Video Link
+        button(name="urlBtn")#jsYoutubeBtn Youtube Link

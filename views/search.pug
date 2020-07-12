@@ -9,7 +9,7 @@ block content
             h4 ⛔No Videos Found
         each item in videos
             +videoBlock3({
-                fileUrl:item.fileUrl,
+                fileUrl:item.fileUrl || item.link,
                 title:item.title,
                 description:item.description,
                 views:item.views,

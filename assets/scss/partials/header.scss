@@ -1,0 +1,35 @@
+.header {
+  //   background-color: $red;
+  // background-color: lightgray;
+  background-color: #f9ca24;
+  margin-bottom: 50px;
+  .header__wrapper {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0px 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    .header__column {
+      i {
+        color: white;
+        font-size: 40px;
+      }
+      &:nth-child(2) {
+        justify-self: center;
+      }
+      &:nth-child(3) {
+        justify-self: end;
+      }
+    }
+    ul {
+      display: flex;
+      //   color: white;
+      font-weight: 600;
+      li:not(:last-child) {
+        margin-right: 15px;
+      }
+    }
+  }
+}

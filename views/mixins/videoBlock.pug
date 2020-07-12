@@ -1,7 +1,14 @@
 mixin videoBlock3(video={})
     .videoBlock
         a(href=routes.videoDetail(video.id))
-            video.videoBlock__thumbnail(src=video.fileUrl)
+            if (video.youtubeLink)
+                iframe(
+                    width="560",
+                    height="310", 
+                    src=video.youtubeLink,
+                    frameborder="0" allow="accelerometer; allowfullscreen")
+            else
+                video.videoBlock__thumbnail(src=video.fileUrl)
             h2.videoBlock__title=video.title
         p.videoBlock__description=video.description
         p.videoBlock__views=video.views

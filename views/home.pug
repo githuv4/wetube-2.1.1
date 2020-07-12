@@ -4,15 +4,16 @@ include mixins/videoBlock
 block content
     H2=pageTitle 
     .videos
-        each item in videos
+        each video in videos
             +videoBlock3({
-                id:item.id,
-                fileUrl:item.fileUrl || item.link,
-                title:item.title,
+                id:video.id,
+                fileUrl:video.fileUrl || video.link,
+                youtubeLink:video.youtubeLink,
+                title:video.title
             })
     
 
-                //- description:item.description,
-                //- views:item.views
+                //- description:video.description,
+                //- views:video.views
         
 
