@@ -200,12 +200,18 @@ main {
        -moz-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
-    .header .header__wrapper .header__column i {
+    .header .header__wrapper .header__column:nth-child(1) i {
       color: white;
       font-size: 40px; }
     .header .header__wrapper .header__column:nth-child(2) {
       width: 100%;
       justify-self: center; }
+      .header .header__wrapper .header__column:nth-child(2) i {
+        position: absolute;
+        top: 10px;
+        left: 12px;
+        font-size: 18px;
+        color: rgba(0, 0, 0, 0.3); }
     .header .header__wrapper .header__column:nth-child(3) {
       justify-self: end; }
     .header .header__wrapper ul {
@@ -220,9 +226,10 @@ main {
       .header .header__wrapper ul li:not(:last-child) {
         margin-right: 15px; }
     .header .header__wrapper form {
-      width: 100%; }
+      width: 100%;
+      position: relative; }
       .header .header__wrapper form input {
-        padding: 5px 20px;
+        padding: 5px 30px;
         width: 100%;
         margin: 5px;
         -webkit-border-radius: 12px;
@@ -249,3 +256,12 @@ main {
         .header .header__wrapper form input::placeholder {
           font-weight: 400;
           color: rgba(0, 0, 0, 0.4); }
+        .header .header__wrapper form input:hover {
+          -webkit-box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+             -moz-box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+                  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28); }
+
+.videoBlock {
+  margin: 10px; }
+  .videoBlock .videoBlock__title {
+    font-size: 16px; }

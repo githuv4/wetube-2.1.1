@@ -14,13 +14,22 @@
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     .header__column {
-      i {
-        color: white;
-        font-size: 40px;
+      &:nth-child(1) {
+        i {
+          color: white;
+          font-size: 40px;
+        }
       }
       &:nth-child(2) {
         width: 100%;
         justify-self: center;
+        i {
+          position: absolute;
+          top: 10px;
+          left: 12px;
+          font-size: 18px;
+          color: rgba(0, 0, 0, 0.3);
+        }
       }
       &:nth-child(3) {
         justify-self: end;
@@ -37,8 +46,9 @@
     }
     form {
       width: 100%;
+      position: relative;
       input {
-        padding: 5px 20px;
+        padding: 5px 30px;
         width: 100%;
         margin: 5px;
         border-radius: 12px;
@@ -49,6 +59,9 @@
           //   color: $dark-grey;
           font-weight: 400;
           color: rgba(0, 0, 0, 0.4);
+        }
+        &:hover {
+          box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
         }
       }
     }

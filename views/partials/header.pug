@@ -6,10 +6,11 @@
                     i.fab.fa-youtube 
         .header__column
             form(action=routes.search, method="get")
+                i.fas.fa-search
                 input(type="text", name="term", placeholder= "Searching By")
         .header__column
             ul
-                if !user.isAthenticated
+                if !user
                     li
                         a(href=routes.join) Join
                     li
@@ -22,4 +23,4 @@
                     li
                         a(href=routes.logout) Log Out
 
-        
+    p locals.user : #{JSON.stringify(user)}
