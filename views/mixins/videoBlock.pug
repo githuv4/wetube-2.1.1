@@ -6,7 +6,7 @@ mixin videoBlock3(video={})
                     width="560",
                     height="310", 
                     src=video.youtubeLink,
-                    frameborder="0" allow="accelerometer; allowfullscreen")
+                    frameborder="0" )
             else
                 video.videoBlock__thumbnail(src=video.fileUrl)
             h2.videoBlock__title=video.title

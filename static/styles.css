@@ -160,8 +160,33 @@ main {
   margin: 0 auto;
   min-height: 70vh; }
 
+.search__videos,
+.videos {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; }
+  .search__videos .videoBlock,
+  .videos .videoBlock {
+    margin-left: 10px; }
+  .search__videos video,
+  .search__videos iframe,
+  .videos video,
+  .videos iframe {
+    width: 320px;
+    height: 180px; }
+
 .header {
   background-color: #f9ca24;
+  background-image: -webkit-gradient(linear, right top, left top, from(#fe8c00), to(#f9ca24));
+  background-image: -webkit-linear-gradient(right, #fe8c00, #f9ca24);
+  background-image: -moz-linear-gradient(right, #fe8c00, #f9ca24);
+  background-image: -o-linear-gradient(right, #fe8c00, #f9ca24);
+  background-image: linear-gradient(to left, #fe8c00, #f9ca24);
   margin-bottom: 50px; }
   .header .header__wrapper {
     width: 100%;
@@ -179,6 +204,7 @@ main {
       color: white;
       font-size: 40px; }
     .header .header__wrapper .header__column:nth-child(2) {
+      width: 100%;
       justify-self: center; }
     .header .header__wrapper .header__column:nth-child(3) {
       justify-self: end; }
@@ -188,6 +214,38 @@ main {
       display: -moz-box;
       display: -ms-flexbox;
       display: flex;
-      font-weight: 600; }
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase; }
       .header .header__wrapper ul li:not(:last-child) {
         margin-right: 15px; }
+    .header .header__wrapper form {
+      width: 100%; }
+      .header .header__wrapper form input {
+        padding: 5px 20px;
+        width: 100%;
+        margin: 5px;
+        -webkit-border-radius: 12px;
+           -moz-border-radius: 12px;
+                border-radius: 12px;
+        color: #444444;
+        font-size: 14px;
+        font-weight: 600; }
+        .header .header__wrapper form input::-webkit-input-placeholder {
+          font-weight: 400;
+          color: rgba(0, 0, 0, 0.4); }
+        .header .header__wrapper form input:-moz-placeholder {
+          font-weight: 400;
+          color: rgba(0, 0, 0, 0.4); }
+        .header .header__wrapper form input::-moz-placeholder {
+          font-weight: 400;
+          color: rgba(0, 0, 0, 0.4); }
+        .header .header__wrapper form input:-ms-input-placeholder {
+          font-weight: 400;
+          color: rgba(0, 0, 0, 0.4); }
+        .header .header__wrapper form input::-ms-input-placeholder {
+          font-weight: 400;
+          color: rgba(0, 0, 0, 0.4); }
+        .header .header__wrapper form input::placeholder {
+          font-weight: 400;
+          color: rgba(0, 0, 0, 0.4); }

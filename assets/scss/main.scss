@@ -18,3 +18,16 @@ main {
   margin: 0 auto;
   min-height: 70vh;
 }
+.search__videos,
+.videos {
+  display: flex;
+  flex-wrap: wrap;
+  .videoBlock {
+    margin-left: 10px;
+  }
+  video,
+  iframe {
+    width: 320px;
+    height: 180px;
+  }
+}
