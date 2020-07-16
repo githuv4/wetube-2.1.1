@@ -33,13 +33,68 @@ export const postLogin = passport.authenticate("local", {
 });
 
 export const logout = (req, res) => {
-  // To Do : Process Log out
+  req.logout();
   res.redirect(routes.home);
 };
 
-export const editProfile = (req, res) =>
-  res.render("editProfile", { pageTitle: "Edit Profile" });
+export const getEditProfile = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const user = await User.findById(id);
+    res.render("editProfile", { pageTitle: "Edit Profile", user });
+  } catch (error) {
+    console.log(error);
+    res.redirect(routes.userDetail(id));
+  }
+};
+export const postEditProfile = async (req, res) => {
+  if (!req.file) {
+    const {
+      params: { id },
+      body: { name, email },
+    } = req;
+    try {
+      await User.findOneAndUpdate(
+        { _id: id },
+        {
+          name,
+          email,
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+    return res.redirect(routes.userDetail(id));
+  }
+  const {
+    params: { id },
+    body: { name, email },
+    file: { path },
+  } = req;
+  console.log(`path:${path}`);
+  try {
+    await User.findOneAndUpdate(
+      { _id: id },
+      {
+        name,
+        email,
+        avatarUrl: path,
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+  res.redirect(routes.userDetail(id));
+};
+
 export const changePassword = (req, res) =>
   res.render("changePassword", { pageTitle: "Change Password" });
-export const userDetail = (req, res) =>
-  res.render("userDetail", { pageTitle: "Profile" });
+export const userDetail = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  const user = await User.findById(id);
+  res.render("userDetail", { pageTitle: "Profile", user });
+};

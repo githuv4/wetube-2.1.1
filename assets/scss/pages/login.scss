@@ -1,0 +1,54 @@
+.form-container,
+.social-login {
+  width: 350px;
+}
+
+.form-container {
+  margin-bottom: 50px;
+  form {
+    display: flex;
+    flex-direction: column;
+
+    textarea,
+    input {
+      outline: none;
+      border: 0;
+      margin-bottom: 10px;
+      padding: 10px;
+      &::placeholder {
+        //   color: $dark-grey;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.4);
+      }
+      &:hover {
+        box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+      }
+    }
+    input[type="submit"] {
+      background-color: #3498db;
+      color: white;
+      margin-top: 10px;
+    }
+  }
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  button {
+    border: 0;
+    padding: 10px;
+    margin-bottom: 10px;
+    i {
+      margin-right: 10px;
+    }
+  }
+  .social-login--github {
+    background-color: #24292e;
+    color: white;
+  }
+  .social-login--facebook {
+    background-color: #4462a4;
+    color: white;
+  }
+}

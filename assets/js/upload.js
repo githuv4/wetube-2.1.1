@@ -6,13 +6,13 @@ const fileUrlInput = document.getElementById("jsFileUrlInput");
 // export const inputType = document.getElementById("jsInputType");
 
 const handleVideoLinkBtn = () => {
-  fileUrlInput.innerHTML = `<input type="text", name="link", placeholder="Put a link">`;
+  fileUrlInput.innerHTML = `<input type="text", name="link", placeholder="http://">`;
 };
 const handleVideoFileBtn = () => {
   fileUrlInput.innerHTML = `<input type="file", name="videoFile", accept="video/*">`;
 };
 const handleYoutubeLinkBtn = () => {
-  fileUrlInput.innerHTML = `<input type="text", name="youtubeId", placeholder="Put the video ID">`;
+  fileUrlInput.innerHTML = `<input type="text", name="youtubeId", placeholder="Youtube Video ID">`;
 };
 
 const init = () => {
@@ -21,6 +21,6 @@ const init = () => {
   youtubeLinkBtn.addEventListener("click", handleYoutubeLinkBtn);
 };
 
-if (formContainer) {
+if (videoFileBtn) {
   init();
 }

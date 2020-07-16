@@ -1,0 +1,29 @@
+.user-profile {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .user-profile__header {
+    // background-color: lightgray;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .user-profile__title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    i,
+    img {
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+    .user-profile__title,
+    .user-profile__name,
+    .user-profile__email {
+      margin-bottom: 10px;
+    }
+    i {
+      font-size: 140px;
+    }
+  }
+}

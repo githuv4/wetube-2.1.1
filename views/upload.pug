@@ -4,15 +4,15 @@ block content
     .form-container  
         form(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
             //- input(type="text", name="link", placeholder="Put a link")
-            label(for="file") Video File
-            #jsFileUrlInput
+            //- label(for="file") Video File
+            #jsFileUrlInput.video-file-url
                 input#jsInputType(type="file", name="videoFile", accept="video/*")
                 //- input#jsInputType(type="text", name="link", placeholder="Put a link")
                 //- input#jsInputType(type="text", name="youtubeId", placeholder="Put a youtube ID")
+            .buttons__video-file
+                .button#jsFileBtn Video File
+                .button#jsLinkBtn Video Link
+                .button#jsYoutubeBtn Youtube Link
             input(type="text", name="title", placeholder="Title", required)
             textarea(name="description", placeholder="Description", required)
             input(type="submit", value="Update Video")
-    .buttons
-        button(name="urlBtn")#jsFileBtn Video File
-        button(name="urlBtn")#jsLinkBtn Video Link
-        button(name="urlBtn")#jsYoutubeBtn Youtube Link

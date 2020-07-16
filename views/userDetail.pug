@@ -1,4 +1,16 @@
 extends layouts/main
 
 block content
-    h4 Profile
+    .user-profile
+        .user-profile__header
+            h2.user-profile__title Profile
+            if(user.avatarUrl)            
+                img.avatar(src=user.avatarUrl)
+            else
+                i.far.fa-user-circle
+            p.user-profile__name Name : 
+                span=user.name
+            p.user-profile__email Email : 
+                span=user.email
+            a(href=routes.editProfile(user.id))
+                button Edit Profile

@@ -34,7 +34,12 @@ const routes = {
     }
     return USER_DETAIL;
   },
-  editProfile: EDIT_PROFILE,
+  editProfile: (id) => {
+    if (id) {
+      return `/users/${id}/edit-profile`;
+    }
+    return EDIT_PROFILE;
+  },
   changePassword: CHANGE_PASSWORD,
 
   videos: VIDEOS,
@@ -48,9 +53,8 @@ const routes = {
   editVideo: (id) => {
     if (id) {
       return `/videos/${id}/edit`;
-    } else {
-      return EDIT_VIDEO;
     }
+    return EDIT_VIDEO;
   },
   deleteVideo: (id) => {
     if (id) {
