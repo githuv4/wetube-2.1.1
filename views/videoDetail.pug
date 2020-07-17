@@ -1,30 +1,68 @@
 extends layouts/main
 
 block content
-    .video__player
-        if (video.link)
-            video(src=`${video.link}`, controls)
-        else if (video.fileUrl)
-            video(src=`/${video.fileUrl}`, controls)
-        else if (video.youtubeLink)
-            iframe(
-                width="860",
-                height="510", 
-                src=video.youtubeLink,
-                frameborder="0",allowfullscreen
-                )
-            
-    .video__info
-        a(href=routes.editVideo(video.id)) 
-            button Edit Video
-        a(href=routes.deleteVideo(video.id))
-            button Delete Video
-        h2=video.title
-        p=video.views
-        span=`${video.createdAt.getFullYear()}.${video.createdAt.getMonth()+1}.${video.createdAt.getDate()}`
-        p=video.description
-    .video__comments
-        if video.comments.length === 1
-            span.video__comment-number 1 comment
+    //- h2.videoTitle=pageTitle
+    .video-wrapper
+        if (video.youtubeLink)
+            .video-player-youtube
+                iframe(
+                    src=video.youtubeLink,
+                    frameborder="0",allowfullscreen)
         else 
-            span.video__comment-number #{video.comments.length} comments
+            .video-player#jsVideoContainer
+                if (video.link)
+                    video(src=`${video.link}`)
+                else if (video.fileUrl)
+                    video(src=`/${video.fileUrl}`)
+                div.video-title#jsVideoTitle
+                    span=video.title
+                .video-contaier__play-pause-btn--big#jsBigPlayPauseBtn
+                    i.far.fa-play-circle
+                
+                .controls#jsControls
+                    .controls__column
+                        span.controls__play-pause-btn#jsPlayPauseBtn
+                            i.fas.fa-play
+                        
+                        span.timer 00:00 / 00:00
+                        .controls__volume
+                            span.controls__volumeBtn#jsVolumeBtn
+                                i.fas.fa-volume-up
+                            input(
+                                type="range"
+                                min="0"
+                                max="1"
+                                value="0.4"
+                                step="0.01"
+                                class="controls__volumeRange"
+                                id="jsVolumeRange")
+                    .controls__column
+                        input(
+                            type="range"
+                            min="0"
+                            value="0"
+                            step="0.1"
+                            class="controls__playprogress"
+                            id="jsPlayProgress"
+                        )
+                        span.controls__fullScreenBtn#jsFullScreenBtn
+                            i.fas.fa-expand
+
+
+        .video-info__buttons
+            a(href=routes.editVideo(video.id)) 
+                button Edit Video
+            a(href=routes.deleteVideo(video.id))
+                button Delete Video
+                
+        .video-info
+            .video-info__title
+                p=video.title
+                span=`Uploaded : ${video.createdAt.getFullYear()}.${video.createdAt.getMonth()+1}.${video.createdAt.getDate()}`
+            p.video-info__views Views : #{video.views}
+            p.video-info__description=video.description
+        .video__comments
+            if video.comments.length === 1
+                span.video__comment-number 1 comment
+            else 
+                span.video__comment-number #{video.comments.length} comments

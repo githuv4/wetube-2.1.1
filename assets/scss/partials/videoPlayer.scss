@@ -1,0 +1,116 @@
+.video-player {
+  display: flex;
+  position: relative;
+  background-color: black;
+  .controls,
+  .video-contaier__play-pause-btn--big,
+  .video-title {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+  }
+  .video-title {
+    z-index: 6;
+    color: white;
+    /* text-transform: uppercase; */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  .video-contaier__play-pause-btn--big {
+    z-index: 5;
+    color: white;
+    position: absolute;
+    top: calc(50% - 55px);
+    left: calc(50% - 40px);
+  }
+  .video-contaier__play-pause-btn--big i {
+    font-size: 80px;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  .controls {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 20px;
+    font-size: 18px;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    box-sizing: border-box;
+
+    i {
+      font-size: 20px;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    .controls__column {
+      display: flex;
+      align-items: center;
+      &:first-child {
+        display: flex;
+        margin-right: 10px;
+        height: 40px;
+        font-size: 16px;
+        width: 200px;
+        &:first-child span {
+          margin-right: 12px;
+        }
+      }
+      &:last-child {
+        /* justify-self: end; */
+        display: flex;
+        width: calc(100% - 180px);
+        justify-content: space-between;
+        /* background-color: red; */
+      }
+
+      &:last-child input {
+        width: 100%;
+        margin-right: 25px;
+        border: none;
+      }
+    }
+
+    .controls__volume {
+      width: 40px;
+      height: 50px;
+      // background-color: lightgray;
+      padding: 15px 0px;
+      left: 160px;
+      border-top: 3px solid transparent;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      i {
+        font-size: 25px;
+      }
+      &:hover .controls__volumeRange {
+        /* color: #48a4e2; */
+        opacity: 1;
+      }
+
+      .controls__volumeRange {
+        /* background-color: red; */
+        position: absolute;
+        top: -90px;
+        left: -55px;
+        transform: rotate(-90deg);
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.showing {
+  opacity: 1;
+}

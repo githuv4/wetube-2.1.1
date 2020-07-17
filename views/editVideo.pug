@@ -1,7 +1,7 @@
 extends layouts/main
 
 block content
-    h2=pageTitle
+    h2.videoTitle Editing "#{pageTitle}"
     .form-container 
         form(action=routes.editVideo(video.id), method="post")
             if (video.link)
@@ -10,7 +10,7 @@ block content
                 input(type="text", name="youtubeId", value=video.youtubeId)
             input(type="text", placeholder="Title", name="title", value=video.title)
             textarea(name="description", placeholder="Description")=video.description
-            input(type="submit", value="Edit Video")
+            input(type="submit", value="Update Video")
 
             
 

@@ -108,7 +108,7 @@ export const getEditVideo = async (req, res) => {
   } = req;
   try {
     const video = await Video.findById(id);
-    res.render("editVideo", { pageTitle: `Editing ${video.title}`, video });
+    res.render("editVideo", { pageTitle: video.title, video });
   } catch (error) {
     console.log(error);
     res.redirect(routes.home);
@@ -122,16 +122,34 @@ export const postEditVideo = async (req, res) => {
   } = req;
   const youtubeLink = `https://www.youtube.com/embed/${youtubeId}`;
   try {
-    await Video.findOneAndUpdate(
-      { _id: id },
-      {
-        youtubeLink,
-        youtubeId,
-        link,
-        title,
-        description,
-      }
-    );
+    if (link) {
+      await Video.findOneAndUpdate(
+        { _id: id },
+        {
+          link,
+          title,
+          description,
+        }
+      );
+    } else if (youtubeId) {
+      await Video.findOneAndUpdate(
+        { _id: id },
+        {
+          youtubeLink,
+          youtubeId,
+          title,
+          description,
+        }
+      );
+    } else {
+      await Video.findOneAndUpdate(
+        { _id: id },
+        {
+          title,
+          description,
+        }
+      );
+    }
     res.redirect(routes.videoDetail(id));
   } catch (error) {
     console.log(error);
