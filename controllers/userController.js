@@ -89,8 +89,29 @@ export const postEditProfile = async (req, res) => {
   res.redirect(routes.userDetail(id));
 };
 
-export const changePassword = (req, res) =>
+export const getChangePassword = (req, res) =>
   res.render("changePassword", { pageTitle: "Change Password" });
+
+export const postChangePassword = async (req, res) => {
+  const {
+    params: { id },
+    body: { password, password2 },
+  } = req;
+  try {
+    await User.findByIdAndUpdate(
+      { _id: id },
+      {
+        password,
+        password2,
+      }
+    );
+    res.redirect(routes.userDetail(id));
+  } catch (error) {
+    console.log(error);
+    res.redirect(routes.changePassword);
+  }
+};
+
 export const userDetail = async (req, res) => {
   const {
     params: { id },

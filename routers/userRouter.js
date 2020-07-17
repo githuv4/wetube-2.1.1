@@ -3,7 +3,8 @@ import routes from "../routes";
 import {
   getEditProfile,
   postEditProfile,
-  changePassword,
+  getChangePassword,
+  postChangePassword,
   userDetail,
 } from "../controllers/userController";
 import { onlyPrivate, uploadImage } from "../localsMiddleware";
@@ -20,7 +21,8 @@ userRouter.post(
   postEditProfile
 );
 
-userRouter.get(routes.changePassword, onlyPrivate, changePassword);
+userRouter.get(routes.changePassword(), onlyPrivate, getChangePassword);
+userRouter.post(routes.changePassword(), onlyPrivate, postChangePassword);
 userRouter.get(routes.userDetail(), userDetail);
 
 export default userRouter;

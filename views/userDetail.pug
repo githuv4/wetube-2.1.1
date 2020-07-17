@@ -3,14 +3,25 @@ extends layouts/main
 block content
     .user-profile
         .user-profile__header
-            h2.user-profile__title Profile
+            h2.user-profile__title #{user.name}'s Profile
             if(user.avatarUrl)            
                 img.avatar(src=user.avatarUrl)
             else
                 i.far.fa-user-circle
-            p.user-profile__name Name : 
-                span=user.name
-            p.user-profile__email Email : 
-                span=user.email
-            a(href=routes.editProfile(user.id))
-                button Edit Profile
+                
+            .user-profile-contents
+                .contents-text.name
+                    .user-profile-title
+                        span Name 
+                    span=user.name
+                .contents-text.email
+                    .user-profile-title
+                        span Email 
+                    span=user.email
+            if user.id === loggedUser.id
+                .user-profile__editProfile
+                    a(href=routes.editProfile(user.id))
+                        button Edit Profile
+                .user-profile__changePassword
+                    a(href=routes.changePassword(user.id))
+                        button Change Password

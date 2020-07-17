@@ -10,16 +10,16 @@
                 input(type="text", name="term", placeholder= "Searching By")
         .header__column
             ul
-                if !user
-                    li
-                        a(href=routes.join) Join
+                if !loggedUser
                     li
                         a(href=routes.login) LogIn
+                    li
+                        a(href=routes.join) Join
                 else
                     li
                         a(href=`/videos${routes.upload}`) Upload
                     li
-                        a(href=routes.userDetail(user.id)) Profile
+                        a(href=routes.userDetail(loggedUser.id)) Profile
                     li
                         a(href=routes.logout) Log Out
 

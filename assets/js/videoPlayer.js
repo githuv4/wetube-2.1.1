@@ -77,9 +77,9 @@ let timeOut = null;
 
 const handleload = () => {
   video.style.cursor = "default";
-  controlsBox.classList.add("showing");
-  videoTitle.classList.add("showing");
-  bigPlayPauseBtn.classList.add("showing");
+  controlsBox.classList.add("showing-controls");
+  videoTitle.classList.add("showing-controls");
+  bigPlayPauseBtn.classList.add("showing-controls");
 };
 const handleShow = () => {
   console.log(`moving`);
@@ -89,21 +89,21 @@ const handleShow = () => {
   }
   // console.log(`no:${timeOut}`);
   video.style.cursor = "default";
-  controlsBox.classList.add("showing");
-  videoTitle.classList.add("showing");
-  bigPlayPauseBtn.classList.add("showing");
+  controlsBox.classList.add("showing-controls");
+  videoTitle.classList.add("showing-controls");
+  bigPlayPauseBtn.classList.add("showing-controls");
   timeOut = setTimeout(handleHide, 3000);
 };
 const handleHide = () => {
   console.log(`out`);
   video.style.cursor = "none";
-  controlsBox.classList.remove("showing");
-  videoTitle.classList.remove("showing");
-  bigPlayPauseBtn.classList.remove("showing");
+  controlsBox.classList.remove("showing-controls");
+  videoTitle.classList.remove("showing-controls");
+  bigPlayPauseBtn.classList.remove("showing-controls");
   if (video.paused) {
-    controlsBox.classList.add("showing");
-    videoTitle.classList.add("showing");
-    bigPlayPauseBtn.classList.add("showing");
+    controlsBox.classList.add("showing-controls");
+    videoTitle.classList.add("showing-controls");
+    bigPlayPauseBtn.classList.add("showing-controls");
   }
 };
 
@@ -214,6 +214,6 @@ fullScrnBtn.addEventListener("click", goFullScreen);
 document.addEventListener("keydown", handleKeydown);
 videoContainer.addEventListener("mousemove", handleShow);
 videoContainer.addEventListener("mouseout", handleHide);
-// window.addEventListener("load", handleload);
+window.addEventListener("load", handleload);
 volumeRange.addEventListener("input", handleDrag);
 progress.addEventListener("input", handleDragPlay);
