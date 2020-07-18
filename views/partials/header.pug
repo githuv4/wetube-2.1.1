@@ -12,9 +12,9 @@
             ul
                 if !loggedUser
                     li
-                        a(href=routes.login) LogIn
-                    li
                         a(href=routes.join) Join
+                    li
+                        a(href=routes.login) LogIn
                 else
                     li
                         a(href=`/videos${routes.upload}`) Upload

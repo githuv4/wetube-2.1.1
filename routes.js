@@ -46,7 +46,6 @@ const routes = {
     }
     return CHANGE_PASSWORD;
   },
-
   videos: VIDEOS,
   upload: UPLOAD,
   videoDetail: (id) => {

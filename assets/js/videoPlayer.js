@@ -203,17 +203,23 @@ const handleDrag = (event) => {
   }
 };
 
-video.addEventListener("timeupdate", handleTimeUpdate);
-video.addEventListener("ended", handleEnded);
-// video.addEventListener("click", handlePlayPauseBtn);
-playPauseBtn.addEventListener("click", handlePlayPauseBtn);
-bigPlayPauseBtn.addEventListener("click", handlePlayPauseBtn);
-volumeBtn.addEventListener("click", handleVolumeBtn);
-fullScrnBtn.addEventListener("click", goFullScreen);
+const init = () => {
+  video.addEventListener("timeupdate", handleTimeUpdate);
+  video.addEventListener("ended", handleEnded);
+  // video.addEventListener("click", handlePlayPauseBtn);
+  playPauseBtn.addEventListener("click", handlePlayPauseBtn);
+  bigPlayPauseBtn.addEventListener("click", handlePlayPauseBtn);
+  volumeBtn.addEventListener("click", handleVolumeBtn);
+  fullScrnBtn.addEventListener("click", goFullScreen);
 
-document.addEventListener("keydown", handleKeydown);
-videoContainer.addEventListener("mousemove", handleShow);
-videoContainer.addEventListener("mouseout", handleHide);
-window.addEventListener("load", handleload);
-volumeRange.addEventListener("input", handleDrag);
-progress.addEventListener("input", handleDragPlay);
+  document.addEventListener("keydown", handleKeydown);
+  videoContainer.addEventListener("mousemove", handleShow);
+  videoContainer.addEventListener("mouseout", handleHide);
+  window.addEventListener("load", handleload);
+  volumeRange.addEventListener("input", handleDrag);
+  progress.addEventListener("input", handleDragPlay);
+};
+
+if (videoContainer) {
+  init();
+}

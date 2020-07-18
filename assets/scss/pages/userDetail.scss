@@ -10,16 +10,15 @@
     align-items: center;
     .user-profile__title {
       font-size: 18px;
-      font-weight: 600;
+      font-weight: 400;
+      padding-bottom: 20px;
+      span:nth-child(2) {
+        text-transform: uppercase;
+        font-weight: 600;
+        // color: #0984e3;
+      }
     }
-    i,
-    img {
-      margin-top: 20px;
-      margin-bottom: 40px;
-    }
-    .user-profile__title {
-      text-transform: uppercase;
-    }
+
     .user-profile__title,
     .user-profile__name,
     .user-profile__email {
@@ -34,7 +33,7 @@
         height: 100%;
         padding: 0px;
         margin-bottom: 10px;
-        // background-color: #cee7ff;
+        background-color: #ffffff;
         box-shadow: 0 1px 2px 0 rgba(32, 33, 36, 0.28);
         // border-radius: 30px;
         // overflow: hidden;
@@ -50,7 +49,7 @@
         }
       }
       .user-profile-title {
-        background-color: #dddddd;
+        background-color: #e6e6e6;
         width: 80px;
         // height: 100%;
         padding: 10px 20px;
@@ -60,6 +59,17 @@
     }
     i {
       font-size: 140px;
+    }
+
+    .avatar,
+    svg {
+      overflow: hidden;
+      margin-bottom: 20px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      color: #d2d6dc;
+      background-color: #ffffff;
     }
 
     .user-profile__editProfile {

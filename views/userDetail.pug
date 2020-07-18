@@ -3,12 +3,18 @@ extends layouts/main
 block content
     .user-profile
         .user-profile__header
-            h2.user-profile__title #{user.name}'s Profile
-            if(user.avatarUrl)            
-                img.avatar(src=user.avatarUrl)
+            h2.user-profile__title
+                span 
+                span #{user.name}
+                span 's Profile
+            if (user.avatarUrl)            
+                .avatar
+                    img(src=`/${user.avatarUrl}`)
             else
-                i.far.fa-user-circle
-                
+                //- i.far.fa-user-circle
+                svg(fill="currentColor" viewBox="0 0 24 24")
+                    path(d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z")
+
             .user-profile-contents
                 .contents-text.name
                     .user-profile-title

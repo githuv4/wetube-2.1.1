@@ -1,14 +1,17 @@
 extends layouts/main
 
 block content
+    .user-profile
+        .user-profile__header
+            h2.user-profile__title 
+                span Editing 
+                span #{user.name}
+                span 's Profile
     .form-container
         form(action=routes.editProfile(user.id), method="post", enctype="multipart/form-data")
-            img(name="avatarUrl", src=user.avatarUrl)
             .video-file-url
                 //- label(for="avatar") Avatar
                 input(type="file", id="avatar", name="avatar", accept="image/*")
-            p=user.avatarUrl
-
             input(type="text", name="name", placeholder="Full Name", value=user.name, required)
             input(type="email", name="email", placeholder="Email", value=user.email, required)
             input(type="submit", value="Update Profile")
