@@ -50,17 +50,24 @@ block content
 
 
         .video-info__buttons
-            a(href=routes.editVideo(video.id)) 
-                button Edit Video
-            a(href=routes.deleteVideo(video.id))
-                button Delete Video
+            if loggedUser && video.creator.id === loggedUser.id
+                a(href=routes.editVideo(video.id)) 
+                    button Edit Video
+                a(href=routes.deleteVideo(video.id))
+                    button Delete Video
                 
         .video-info
             .video-info__title
-                p=video.title
-                span=`Uploaded : ${video.createdAt.getFullYear()}.${video.createdAt.getMonth()+1}.${video.createdAt.getDate()}`
-            p.video-info__views Views : #{video.views}
-            p.video-info__description=video.description
+                .video-info__title-column
+                    p=video.title
+                    .video-info__creator 
+                        |Uploaded by 
+                        a(href=routes.userDetail(video.creator.id))
+                           span #{video.creator.name}
+                    //- .video-info__date=`${video.createdAt.getFullYear()}.${video.createdAt.getMonth()+1}.${video.createdAt.getDate()}`
+                .video-info__title-column
+                    .video-info__views=`${video.views} views • ${video.createdAt.getFullYear()}. ${video.createdAt.getMonth()+1}.${video.createdAt.getDate()}`
+            .video-info__description=video.description
         .video__comments
             if video.comments.length === 1
                 span.video__comment-number 1 comment
