@@ -7,10 +7,13 @@ import {
   getEditVideo,
   postEditVideo,
   deleteVideo,
+  findMyVideos,
 } from "../controllers/videoController";
 import { uploadVideo, onlyPrivate } from "../localsMiddleware";
 
 const videoRouter = express.Router();
+
+videoRouter.get(routes.myVideos, onlyPrivate, findMyVideos);
 
 videoRouter.get(routes.upload, onlyPrivate, getUpload);
 videoRouter.post(routes.upload, onlyPrivate, uploadVideo, postUpload);

@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .user-profile__title {
       font-size: 18px;
       font-weight: 400;
@@ -39,6 +40,11 @@
         // overflow: hidden;
         display: flex;
         align-items: center;
+        &:first-child {
+          span {
+            text-transform: capitalize;
+          }
+        }
       }
       .user-profile__name,
       .user-profile__email {
@@ -48,6 +54,7 @@
           height: 100%;
         }
       }
+
       .user-profile-title {
         background-color: #e6e6e6;
         width: 80px;
@@ -63,6 +70,9 @@
 
     .avatar,
     svg {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       overflow: hidden;
       margin-bottom: 20px;
       width: 200px;
@@ -70,6 +80,9 @@
       border-radius: 50%;
       color: #d2d6dc;
       background-color: #ffffff;
+    }
+    img {
+      height: 200px;
     }
 
     .user-profile__editProfile {

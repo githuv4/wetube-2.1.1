@@ -9,7 +9,7 @@ export const localsMiddleware = (req, res, next) => {
   res.locals.siteName = "WeTube";
   res.locals.loggedUser = req.user || null;
   // console.log(`req.user : ${JSON.stringify(req.user)}`);
-  console.log(req.user);
+  // console.log(req.user);
   next();
 };
 

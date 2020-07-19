@@ -1,9 +1,11 @@
 .header
     .header__wrapper
         .header__column
-            h1
-                a(href=routes.home)
-                    i.fab.fa-youtube 
+            ul.mainTitle
+                li
+                    a(href=routes.home)
+                        i.fab.fa-youtube
+                        span Wetube
         .header__column
             form(action=routes.search, method="get")
                 i.fas.fa-search
@@ -20,7 +22,11 @@
                         a(href=`/videos${routes.upload}`) Upload
                     li
                         a(href=routes.userDetail(loggedUser.id)) Profile
+                    li.myVideosBtn
+                        a(href=`/videos${routes.myVideos}`) My videos
                     li
                         a(href=routes.logout) Log Out
 
-    //- p=user
+
+    //- p=loggedUser && loggedUser.id
+    //- p=video.creator.id

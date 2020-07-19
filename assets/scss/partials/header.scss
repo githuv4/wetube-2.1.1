@@ -13,15 +13,34 @@
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0px 15px;
+    padding: 3px 15px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     .header__column {
+      ul {
+        display: flex;
+        align-items: center;
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        li:not(:last-child) {
+          margin-right: 10px;
+        }
+      }
       &:nth-child(1) {
-        i {
+        a {
+          display: flex;
+          align-items: center;
+          // font-size: 16px;
+          text-transform: uppercase;
+          font-weight: 600;
           color: white;
-          font-size: 40px;
+          i {
+            color: white;
+            font-size: 40px;
+            margin-right: 10px;
+          }
         }
       }
       &:nth-child(2) {
@@ -37,15 +56,6 @@
       }
       &:nth-child(3) {
         justify-self: end;
-      }
-    }
-    ul {
-      display: flex;
-      color: white;
-      font-weight: 600;
-      text-transform: uppercase;
-      li:not(:last-child) {
-        margin-right: 15px;
       }
     }
     form {

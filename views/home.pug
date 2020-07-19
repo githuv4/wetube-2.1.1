@@ -2,14 +2,19 @@ extends layouts/main
 include mixins/videoBlock
 
 block content
-    //- H2=pageTitle 
+    //- .pageTitle=pageTitle 
+    .pageTitle 
+        span.loggedUserName=userName
+        span=userText
     .videos
         each video in videos
             +videoBlock3({
                 id:video.id,
                 fileUrl:video.fileUrl || video.link,
                 youtubeLink:video.youtubeLink,
-                title:video.title
+                title:video.title,
+                creatorId:video.creator.id,
+                createName:video.creator.name
             })
     
 

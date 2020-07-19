@@ -23,8 +23,9 @@ block content
                 .contents-text.email
                     .user-profile-title
                         span Email 
-                    span=user.email
-            if user.id === loggedUser.id
+                    span=user.email               
+                
+            if loggedUser && user.id === loggedUser.id
                 .user-profile__editProfile
                     a(href=routes.editProfile(user.id))
                         button Edit Profile

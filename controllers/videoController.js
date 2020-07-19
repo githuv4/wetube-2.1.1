@@ -3,13 +3,36 @@ import Video from "../models/Video";
 
 export const home = async (req, res) => {
   try {
-    const videos = await Video.find({}).sort({ _id: -1 });
-    res.render("home", { pageTitle: "Home(b2)", videos });
+    const videos = await Video.find({}).sort({ _id: -1 }).populate("creator");
+    res.render("home", { pageTitle: "Home", videos });
   } catch (error) {
     console.log(error);
-    res.render("home", { pageTitle: "Home(b2)", videos: [] });
+    res.render("home", { pageTitle: "Home", videos: [] });
   }
   // res.send("home");
+};
+
+export const findMyVideos = async (req, res) => {
+  try {
+    const myVideos = await await Video.find({ creator: req.user.id }).populate(
+      "creator"
+    );
+    if (myVideos.length === 0) {
+      return res.render("home", {
+        userName: `Hi! ${req.user.name}, `,
+        userText: "You don't have any videos yet.",
+        videos: myVideos,
+      });
+    }
+    res.render("home", {
+      userName: req.user.name,
+      userText: "'s Videos",
+      videos: myVideos,
+    });
+  } catch (error) {
+    console.log(error);
+    res.redirect(routes.home);
+  }
 };
 
 export const search = async (req, res) => {
@@ -20,7 +43,7 @@ export const search = async (req, res) => {
   try {
     videos = await Video.find({
       title: { $regex: searchingBy, $options: "i" },
-    });
+    }).populate("creator");
   } catch (error) {
     console.log(error);
   }
@@ -91,7 +114,6 @@ export const videoDetail = async (req, res) => {
   } = req;
   try {
     const video = await Video.findById(id).populate("creator");
-    console.log(video);
     res.render("videoDetail", { pageTitle: video.title, video });
   } catch (error) {
     console.log(error);
@@ -105,7 +127,15 @@ export const getEditVideo = async (req, res) => {
   } = req;
   try {
     const video = await Video.findById(id);
-    res.render("editVideo", { pageTitle: video.title, video });
+    console.log(typeof video.creator);
+    console.log(typeof video.creator.id);
+    console.log(typeof req.user.id);
+    if (JSON.stringify(video.creator) !== JSON.stringify(req.user.id)) {
+      // console.log("!==");
+      throw Error;
+    } else {
+      res.render("editVideo", { pageTitle: video.title, video });
+    }
   } catch (error) {
     console.log(error);
     res.redirect(routes.home);
@@ -159,7 +189,12 @@ export const deleteVideo = async (req, res) => {
     params: { id },
   } = req;
   try {
-    await Video.findByIdAndRemove({ _id: id });
+    const video = await Video.findById(id);
+    if (JSON.stringify(video.creator) !== JSON.stringify(req.user.id)) {
+      throw Error;
+    } else {
+      await Video.findByIdAndRemove({ _id: id });
+    }
   } catch (error) {
     console.log(error);
   }

@@ -1,6 +1,8 @@
 .video-wrapper {
   width: 700px;
   min-width: 500px;
+  margin-bottom: 50px;
+
   .video-player,
   .video-player-youtube {
     display: flex;
@@ -47,6 +49,7 @@
         }
         span {
           font-weight: 600;
+          text-transform: capitalize;
         }
         .video-info__views {
           text-align: right;
