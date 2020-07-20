@@ -7,11 +7,12 @@ block content
     .search__videos
         if videos.length === 0
             h4 ⛔No Videos Found
-        each item in videos
+        each video in videos
             +videoBlock3({
-                fileUrl:item.fileUrl || item.link,
-                youtubeLink:item.youtubeLink,
-                title:item.title,
-                id:item.id,
-                creator:item.creator.name
+                fileUrl:video.fileUrl || video.link,
+                youtubeLink:video.youtubeLink,
+                title:video.title,
+                id:video.id,
+                creatorId:video.creator.id,
+                creatorName:video.creator.name
             })

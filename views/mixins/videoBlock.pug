@@ -5,13 +5,15 @@ mixin videoBlock3(video={})
                 if (video.youtubeLink) 
                     .for-link
                     iframe(src=video.youtubeLink, frameborder="0" )
-                else
+                else if (video.link)
+                    video.videoBlock__thumbnail(src=video.link)
+                else 
                     video.videoBlock__thumbnail(src=video.fileUrl)
         h2.videoBlock__title=video.title
         h2.videoBlock__creator by 
             //- a(href=routes.userDetail(video.creator.id))
             a(href=routes.userDetail(video.creatorId))
-                span #{video.createName}
+                span #{video.creatorName}
         p.videoBlock__description=video.description
         p.videoBlock__views=video.views
         

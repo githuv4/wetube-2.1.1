@@ -1,12 +1,17 @@
 extends layouts/main
+include mixins/videoBlock
 
 block content
     .user-profile
         .user-profile__header
             h2.user-profile__title
-                span 
-                span #{user.name}
-                span 's Profile
+                if (loggedUser.id !== user.id)
+                    span 
+                    span #{user.name}
+                    span 's Profile
+                else
+                    span
+                    span My Profile
             if (user.avatarUrl)            
                 .avatar
                     img(src=`/${user.avatarUrl}`)
@@ -32,3 +37,15 @@ block content
                 .user-profile__changePassword
                     a(href=routes.changePassword(user.id))
                         button Change Password
+    
+    .user-videos
+        each video in user.videos
+            +videoBlock3({
+                fileUrl:`/${video.fileUrl}`,
+                link:video.link,
+                youtubeLink:video.youtubeLink,
+                title:video.title,
+                id:video.id,
+                creatorId:user.id,
+                creatorName:user.name
+            })

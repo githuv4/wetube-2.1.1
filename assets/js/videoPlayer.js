@@ -1,5 +1,8 @@
+/* eslint-disable no-use-before-define */
+const videoWrapper = document.querySelector("#jsVideoWrapper");
 const videoContainer = document.querySelector("#jsVideoContainer");
 const video = document.querySelector("video");
+const videoYoutube = document.querySelector(".video-player-youtube iframe");
 const videoTitle = document.querySelector("#jsVideoTitle");
 const controlsBox = document.getElementById("jsControls");
 const playPauseBtn = document.getElementById("jsPlayPauseBtn");
@@ -9,6 +12,11 @@ const volumeRange = document.getElementById("jsVolumeRange");
 const fullScrnBtn = document.getElementById("jsFullScreenBtn");
 const timer = document.querySelector(".timer");
 const progress = document.getElementById("jsPlayProgress");
+
+const registerView = () => {
+  const videoId = window.location.href.split("/videos/")[1];
+  fetch(`/api/${videoId}/view`, { method: "post" });
+};
 
 const handleTimeUpdate = () => {
   // console.dir(video);
@@ -28,7 +36,7 @@ const handleTimeUpdate = () => {
 
   progress.value = currentTime;
   progress.max = duration;
-  console.log(progress.value);
+  // console.log(progress.value);
 
   if (hours < 10) {
     hours = `0${hours}`;
@@ -59,7 +67,7 @@ const handleTimeUpdate = () => {
 const handleKeydown = (event) => {
   const key = event.code;
   // console.log(event);
-  console.log(key);
+  // console.log(key);
   if (key === "Space" || key === "Enter") {
     handlePlayPauseBtn();
     handleHide();
@@ -75,19 +83,18 @@ const handleKeydown = (event) => {
 
 let timeOut = null;
 
-const handleload = () => {
+const handleLoad = () => {
+  console.log("loaded");
+  registerView();
   video.style.cursor = "default";
   controlsBox.classList.add("showing-controls");
   videoTitle.classList.add("showing-controls");
   bigPlayPauseBtn.classList.add("showing-controls");
 };
 const handleShow = () => {
-  console.log(`moving`);
   if (timeOut) {
-    // console.log(`yes:${timeOut}`);
     clearTimeout(timeOut);
   }
-  // console.log(`no:${timeOut}`);
   video.style.cursor = "default";
   controlsBox.classList.add("showing-controls");
   videoTitle.classList.add("showing-controls");
@@ -95,7 +102,6 @@ const handleShow = () => {
   timeOut = setTimeout(handleHide, 3000);
 };
 const handleHide = () => {
-  console.log(`out`);
   video.style.cursor = "none";
   controlsBox.classList.remove("showing-controls");
   videoTitle.classList.remove("showing-controls");
@@ -173,6 +179,7 @@ const handlePlayPauseBtn = () => {
 };
 
 const handleEnded = () => {
+  // registerView();
   video.currentTime = 0;
   playPauseBtn.innerHTML = `<i class="fas fa-play"></i>`;
   bigPlayPauseBtn.innerHTML = `<i class="far fa-play-circle"></i>`;
@@ -203,6 +210,11 @@ const handleDrag = (event) => {
   }
 };
 
+const input = document.querySelector("#jsAddComment input");
+const handleRemoveKeydownEvent = () => {
+  document.removeEventListener("keydown", handleKeydown);
+};
+
 const init = () => {
   video.addEventListener("timeupdate", handleTimeUpdate);
   video.addEventListener("ended", handleEnded);
@@ -215,11 +227,17 @@ const init = () => {
   document.addEventListener("keydown", handleKeydown);
   videoContainer.addEventListener("mousemove", handleShow);
   videoContainer.addEventListener("mouseout", handleHide);
-  window.addEventListener("load", handleload);
+  window.addEventListener("load", handleLoad);
   volumeRange.addEventListener("input", handleDrag);
   progress.addEventListener("input", handleDragPlay);
+  input.addEventListener("focus", handleRemoveKeydownEvent);
 };
 
-if (videoContainer) {
+if (videoYoutube) {
+  registerView();
+}
+
+// if (videoContainer) {
+if (videoWrapper) {
   init();
 }

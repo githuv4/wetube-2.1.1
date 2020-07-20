@@ -2,7 +2,7 @@ extends layouts/main
 
 block content
     //- h2.videoTitle=pageTitle
-    .video-wrapper
+    .video-wrapper#jsVideoWrapper
         if (video.youtubeLink)
             .video-player-youtube
                 iframe(
@@ -11,7 +11,7 @@ block content
         else 
             .video-player#jsVideoContainer
                 if (video.link)
-                    video(src=`${video.link}`)
+                    video(src=video.link)
                 else if (video.fileUrl)
                     video(src=`/${video.fileUrl}`)
                 div.video-title#jsVideoTitle
@@ -73,3 +73,10 @@ block content
                 span.video__comment-number 1 comment
             else 
                 span.video__comment-number #{video.comments.length} comments
+            ul.video_comments-list
+                each comment in video.comments
+                    span=comment.text
+            form.add_comment#jsAddComment
+                input(type="text", placeholder="Add a comment", name="comment")
+                
+            

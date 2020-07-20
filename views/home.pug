@@ -10,11 +10,12 @@ block content
         each video in videos
             +videoBlock3({
                 id:video.id,
-                fileUrl:video.fileUrl || video.link,
+                fileUrl:`/${video.fileUrl}`,
+                link:video.link,
                 youtubeLink:video.youtubeLink,
                 title:video.title,
                 creatorId:video.creator.id,
-                createName:video.creator.name
+                creatorName:video.creator.name
             })
     
 
