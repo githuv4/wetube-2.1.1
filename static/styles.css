@@ -1011,6 +1011,21 @@ main {
             align-items: start; }
     .video-wrapper .video__comments .video__comment-number {
       margin-bottom: 20px; }
+    .video-wrapper .video__comments .video__comments-list {
+      margin-bottom: 20px; }
+      .video-wrapper .video__comments .video__comments-list .video__comments-list__img-container {
+        width: 50px;
+        height: 50px;
+        -webkit-border-radius: 50%;
+           -moz-border-radius: 50%;
+                border-radius: 50%;
+        overflow: hidden;
+        -webkit-box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+           -moz-box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+                box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28); }
+        .video-wrapper .video__comments .video__comments-list .video__comments-list__img-container img {
+          width: 50px;
+          height: 50px; }
     .video-wrapper .video__comments form {
       width: 100%; }
       .video-wrapper .video__comments form input {

@@ -84,7 +84,7 @@ const handleKeydown = (event) => {
 let timeOut = null;
 
 const handleLoad = () => {
-  console.log("loaded");
+  // console.log("loaded");
   registerView();
   video.style.cursor = "default";
   controlsBox.classList.add("showing-controls");
@@ -186,7 +186,7 @@ const handleEnded = () => {
   handleShow();
 };
 
-const handleDragPlay = () => {
+const handleDragPlay = (event) => {
   const {
     target: { value },
   } = event;
@@ -237,7 +237,8 @@ if (videoYoutube) {
   registerView();
 }
 
-// if (videoContainer) {
-if (videoWrapper) {
+if (videoContainer) {
+  console.log("form-player exists");
+  // if (videoWrapper) {
   init();
 }
