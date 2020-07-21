@@ -76,24 +76,87 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     .video__comment-number {
       margin-bottom: 20px;
     }
     .video__comments-list {
       margin-bottom: 20px;
-      .video__comments-list__img-container {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        overflow: hidden;
-        box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
-        img {
-          width: 50px;
-          height: 50px;
+      width: 100%;
+      li {
+        width: 100%;
+        display: flex;
+        padding: 7px 0px;
+        position: relative;
+        // &:hover {
+        //   background-color: rgb(238, 238, 238);
+        // }
+        .video__comments-list__column {
+          &:first-child {
+            min-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+            margin-right: 10px;
+            img {
+              width: 40px;
+              height: 40px;
+              border: 0px;
+            }
+            svg {
+              color: #d2d6dc;
+              background-color: #ffffff;
+            }
+          }
+          &:nth-child(2) {
+            max-width: 580px;
+            line-height: 18px;
+            display: flex;
+            flex-direction: column;
+            .video__comment-list-createInfo {
+              // margin-bottom: 5px;
+              display: flex;
+              align-items: center;
+              span {
+                &:first-child {
+                  font-weight: 600;
+                  margin-right: 5px;
+                  text-transform: capitalize;
+                  // text-transform: uppercase;
+                }
+                &:last-child {
+                  font-size: 11px;
+                  color: rgba(0, 0, 0, 0.6);
+                }
+              }
+            }
+          }
+          &:last-child {
+            position: absolute;
+            right: 0px;
+            // background-color: lightgray;
+            .delete-btn {
+              // box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.4);
+              font-size: 12px;
+              background-color: #e2e2e2;
+              // background-color: #3498db;
+              color: rgb(112, 112, 112);
+              border: 0;
+              // border-radius: 5px;
+              outline: none;
+              padding: 5px 10px;
+              user-select: none;
+              cursor: pointer;
+              &:active {
+                transform: scale(0.95);
+              }
+            }
+          }
         }
-      }
-      .video__comments-list__text {
+        // border-top: 1px solid rgb(226, 226, 226);
+        // &:not(:first-child) {
+        // }
       }
     }
     form {

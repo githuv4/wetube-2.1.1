@@ -5,13 +5,13 @@ block content
     .user-profile
         .user-profile__header
             h2.user-profile__title
-                if (loggedUser.id !== user.id)
+                if (loggedUser && loggedUser.id === user.id)
+                    span
+                    span My Profile
+                else
                     span 
                     span #{user.name}
                     span 's Profile
-                else
-                    span
-                    span My Profile
             if (user.avatarUrl)            
                 .avatar
                     img(src=`/${user.avatarUrl}`)

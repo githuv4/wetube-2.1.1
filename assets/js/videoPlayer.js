@@ -68,17 +68,39 @@ const handleKeydown = (event) => {
   const key = event.code;
   // console.log(event);
   // console.log(key);
+  if (
+    (event.keyCode == 32 && event.target == document.body) ||
+    (event.keyCode == 32 && event.target == fullScrnBtn)
+  ) {
+    event.preventDefault();
+  }
+
   if (key === "Space" || key === "Enter") {
+    fullScrnBtn.removeEventListener("click", goFullScreen);
+    document.removeEventListener("keydown", exitFullScreen);
     handlePlayPauseBtn();
     handleHide();
-    document.removeEventListener("keydown", exitFullScreen);
-    document.removeEventListener("keydown", goFullScreen);
-  } else if (key === "KeyF") {
-    goFullScreen();
-  } else {
-    document.removeEventListener("keydown", exitFullScreen);
-    document.removeEventListener("keydown", goFullScreen);
+    fullScrnBtn.addEventListener("click", goFullScreen);
+    document.addEventListener("keydown", exitFullScreen);
   }
+  // else if (key === "KeyF") {
+  //   if (event.target == document.input) {
+  //     event.preventDefault();
+  //   }
+  //   goFullScreen();
+  // } else {
+  //   document.removeEventListener("keydown", exitFullScreen);
+  //   document.removeEventListener("keydown", goFullScreen);
+  // }
+  console.log(key);
+  console.log(event.target);
+};
+
+const input = document.querySelector("#jsAddComment input");
+const handleRemoveKeydownEvent = () => {
+  document.removeEventListener("keydown", handleKeydown);
+  fullScrnBtn.removeEventListener("click", goFullScreen);
+  document.removeEventListener("keydown", exitFullScreen);
 };
 
 let timeOut = null;
@@ -210,11 +232,6 @@ const handleDrag = (event) => {
   }
 };
 
-const input = document.querySelector("#jsAddComment input");
-const handleRemoveKeydownEvent = () => {
-  document.removeEventListener("keydown", handleKeydown);
-};
-
 const init = () => {
   video.addEventListener("timeupdate", handleTimeUpdate);
   video.addEventListener("ended", handleEnded);
@@ -224,13 +241,13 @@ const init = () => {
   volumeBtn.addEventListener("click", handleVolumeBtn);
   fullScrnBtn.addEventListener("click", goFullScreen);
 
+  input.addEventListener("focus", handleRemoveKeydownEvent);
   document.addEventListener("keydown", handleKeydown);
   videoContainer.addEventListener("mousemove", handleShow);
   videoContainer.addEventListener("mouseout", handleHide);
   window.addEventListener("load", handleLoad);
   volumeRange.addEventListener("input", handleDrag);
   progress.addEventListener("input", handleDragPlay);
-  input.addEventListener("focus", handleRemoveKeydownEvent);
 };
 
 if (videoYoutube) {
