@@ -96,10 +96,10 @@ export const postUpload = async (req, res) => {
   if (!link && !youtubeId) {
     const {
       body: { title, description },
-      file: { path },
+      file: { location },
     } = req;
     const newVideo = await Video.create({
-      fileUrl: path,
+      fileUrl: location,
       title,
       description,
       creator: req.user.id,

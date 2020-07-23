@@ -1,7 +1,9 @@
 extends layouts/main
 
 block content
-    h2.videoTitle Editing "#{pageTitle}"
+    h2.videoTitle 
+        span Editing 
+        span "#{pageTitle}"
     .form-container 
         form(action=routes.editVideo(video.id), method="post")
             if (video.link)

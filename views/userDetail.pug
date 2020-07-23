@@ -14,7 +14,8 @@ block content
                     span 's Profile
             if (user.avatarUrl)            
                 .avatar
-                    img(src=`/${user.avatarUrl}`)
+                    //- img(src=`/${user.avatarUrl}`)
+                    img(src=user.avatarUrl)
             else
                 //- i.far.fa-user-circle
                 svg(fill="currentColor" viewBox="0 0 24 24")
@@ -41,7 +42,7 @@ block content
     .user-videos
         each video in user.videos
             +videoBlock3({
-                fileUrl:`/${video.fileUrl}`,
+                fileUrl:video.fileUrl,
                 link:video.link,
                 youtubeLink:video.youtubeLink,
                 title:video.title,

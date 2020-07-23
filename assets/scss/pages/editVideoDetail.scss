@@ -1,5 +1,10 @@
 .videoTitle {
   margin-bottom: 20px;
   font-size: 16px;
-  font-weight: 600;
+  span:nth-child(2) {
+    // text-transform: uppercase;
+    text-transform: capitalize;
+    font-weight: 600;
+    // color: #0984e3;
+  }
 }
