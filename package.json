@@ -36,9 +36,10 @@
     "webpack-cli": "^3.3.12"
   },
   "scripts": {
-    "dev:server": "nodemon --exec babel-node init.js",
+    "dev:server": "nodemon --exec babel-node src/init.js",
     "dev:assets": "set WEBPACK_ENV=development&&webpack -w",
-    "build:assets": "set WEBPACK_ENV=production&&webpack"
+    "build:assets": "set WEBPACK_ENV=production&&webpack",
+    "build": "npm run build:server && npm run build:assets"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.10.5",
