@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-// mongoose.connect(process.env.MONGO_URL_2, {
-mongoose.connect(process.env.MONGO_URL_PROD, {
+mongoose.connect(process.env.MONGO_URL_2, {
+  // mongoose.connect(process.env.MONGO_URL_PROD, {
   useNewUrlParser: true,
   useFindAndModify: false,
 });
