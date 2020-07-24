@@ -77,3 +77,5 @@ typings/
 package-lock.json
 uploads
 static
+build
+package-refer.json
